@@ -29,9 +29,9 @@ total_interest = total_payments - loan_amount
 
 st.write('### કેટલા ભરવાના')
 col1, col2, col3 = st.columns(3)
-col1.metric(label="માસિક હપ્તો", value=f"Rs{monthly_payment:.2f}")
-col2.metric(label="કુલ ચુકવણી", value=f"Rs.{total_payments:.2f}")
-col3.metric(label="કુલ વ્યાજ", value=f"Rs.{total_interest:.2f}")
+col1.metric(label="માસિક હપ્તો", value=f"Rs. {monthly_payment:.2f}")
+col2.metric(label="કુલ ચુકવણી", value=f"Rs. {total_payments:.2f}")
+col3.metric(label="કુલ વ્યાજ", value=f"Rs. {total_interest:.2f}")
 
 # Create a data-frame with the payment schedule.
 schedule = []
@@ -60,5 +60,5 @@ df = pd.DataFrame(
 
 #display the data frame as a chart.
 st.write('### ચુકવણી સમયપત્રક')
-payments_df = df[["વર્ષ", "બાકી રહેલ રકમ"]].groupby("year").min()
-st.line_chart(payments_df)
+payments_df = df[["Year", "Remaining Balance"]].groupby("Year").min()
+st.line_chart(payments_df, x_label="વર્ષ", y_label="બાકી રહેલી રકમ")
